@@ -10,11 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    # This code creates the storage account that is required before the first time that Terrform is run, and gets commented out after that run
+    # - name: Azure Login
+    #   uses: azure/login@v1
+    #   with:
+    #     creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+      
+    # - name: Azure CLI script
+    #   uses: azure/CLI@v1
+    #   with:
+    #     azcliversion: 2.45.0
+    #     inlineScript: |
+    #       az group create --location eastus --name terraform-rg
+    #       az storage account create --name upictfhub --resource-group terraform-rg --location eastus --sku Standard_LRS --kind StorageV2
+    #       az storage container create --name tfstate --account-name upictfhub --resource-group terraform-rg
+    
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+    
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
