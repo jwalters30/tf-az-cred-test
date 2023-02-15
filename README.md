@@ -1,5 +1,5 @@
 # tf-az-cred-test
-Used for testing credentials in Azure AD with Terraform
+Used for testing credentials in Azure AD with Terraform.  Some background info here: https://github.com/jwalters30/Notes/blob/main/AzureIdentity.md
 
 ## Getting Started
 
