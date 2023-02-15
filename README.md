@@ -122,3 +122,13 @@ The thing that ended up working, was to assign the "Cloud Application Administra
 
 Note that there is no evidence of that role being assigned in the Azure CLI.
 
+### Working credentials for building
+
+Since the original credentials secret didn't successfully allow for the Azure CLI Login, the credentials were broken down into component secrets.
+
+![Screenshot 2023-02-15 115101](https://user-images.githubusercontent.com/4760734/219112946-f053de13-b5a6-48f8-8de8-361921cf6458.png)
+
+The credentials line from the example was changed into:
+```
+        creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+```
